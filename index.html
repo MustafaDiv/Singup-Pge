@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--======== ICON PACK ========-->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Sigup/Login</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-image: url(/erik-mclean-ZRns2R5azu0-unsplash.jpg);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+
+      /* HEADRER CSS */
+
+      .header {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        backdrop-filter: blur(50px);
+        height: 70px;
+      }
+
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 40px;
+        height: 100%;
+        padding-left: 50px;
+        font-family: sans-serif;
+      }
+
+      /* BODY, Main part CSS */
+
+      .wrapper {
+        margin: 0 30%;
+        background-color: rgba(0, 0, 0, 0.2);
+        height: 730px;
+        margin-top: 10vh;
+        backdrop-filter: blur(10px);
+        border: 1px solid white;
+        border-radius: 15px;
+      }
+
+      .wrapper:hover {
+        transition: 0.5s ease-in;
+        box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.4),
+          0px 0px 10px rgba(255, 255, 255, 0.4),
+          0px 0px 20px rgba(255, 255, 255, 0.4);
+      }
+
+      .wrapper::after {
+        transition: 0.5s ease-in;
+        box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.4),
+          0px 0px 10px rgba(255, 255, 255, 0.4),
+          0px 0px 20px rgba(255, 255, 255, 0.4);
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 35px;
+        color: white;
+        font-size: 53px;
+      }
+
+      .name-container {
+        padding: 0 60px;
+        position: relative;
+      }
+
+      #nameA {
+        display: block;
+        color: white;
+        font-size: 23px;
+        padding-left: 5px;
+      }
+
+      #name {
+        height: 40px;
+        width: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        padding-left: 10px;
+        padding-right: 10%;
+        font-size: 17px;
+        outline: none;
+      }
+
+      #name::placeholder {
+        font-size: 17px;
+      }
+
+      #inputbox:hover {
+        outline: none;
+        border-bottom: white 2px solid;
+        transition: 0.9s ease-in-out;
+      }
+
+      #iconA {
+        color: white;
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+        bottom: 15%;
+      }
+
+      #inputbox {
+        width: 100%;
+        border-width: 0px 0px 2px 0px;
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.555);
+        position: relative;
+      }
+
+      .email-container {
+        padding: 0 60px;
+      }
+
+      #email-l {
+        display: block;
+        color: white;
+        font-size: 23px;
+        padding-left: 5px;
+        margin-top: 35px;
+      }
+
+      #email {
+        height: 40px;
+        width: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        padding-left: 10px;
+        font-size: 17px;
+        outline: none;
+        padding-right: 10%;
+      }
+
+      #email::placeholder {
+        font-size: 17px;
+      }
+
+      #email-input:hover {
+        outline: none;
+        border-bottom: white 2px solid;
+        transition: 0.9s ease-in-out;
+      }
+
+      .pass-wrapper {
+        padding: 0 60px;
+      }
+
+      #email-input {
+        width: 100%;
+        border-width: 0px 0px 2px 0px;
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.555);
+        position: relative;
+      }
+
+      #ICONc {
+        color: white;
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+        bottom: 15%;
+      }
+
+      #pass-l {
+        display: block;
+        color: white;
+        font-size: 23px;
+        padding-left: 5px;
+        margin-top: 35px;
+      }
+
+      #password {
+        height: 40px;
+        width: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        padding-left: 10px;
+        font-size: 17px;
+        outline: none;
+        padding-right: 10%;
+      }
+
+      #password::placeholder {
+        font-size: 17px;
+      }
+
+      #input-password:hover {
+        outline: none;
+        border-bottom: white 2px solid;
+        transition: 0.9s ease-in-out;
+      }
+
+      #iconB {
+        color: white;
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+        bottom: 15%;
+      }
+
+      #input-password {
+        width: 100%;
+        border-width: 0px 0px 2px 0px;
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.555);
+        position: relative;
+      }
+
+      .repeat-pass-wrapper {
+        padding: 0 60px;
+      }
+
+      #re-pass-l {
+        display: block;
+        color: white;
+        font-size: 23px;
+        padding-left: 5px;
+        margin-top: 35px;
+      }
+
+      #re-password {
+        height: 40px;
+        width: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        padding-left: 10px;
+        font-size: 17px;
+        outline: none;
+        padding-right: 10%;
+      }
+
+      #re-password::placeholder {
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.2);
+      }
+
+      .re-pass:focus {
+        outline: none;
+        border-bottom: white 2px solid;
+        transition: 0.9s ease-in-out;
+      }
+
+      #re-pass {
+        width: 100%;
+        border-width: 0px 0px 2px 0px;
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.555);
+        position: relative;
+      }
+
+      #lock {
+        color: white;
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+        bottom: 15%;
+      }
+
+      #re-pass:hover {
+        outline: none;
+        border-bottom: white 2px solid;
+        transition: 0.9s ease-in-out;
+      }
+
+      .btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
+      #sign-up-btn {
+        margin-top: 0px;
+        display: block;
+        height: 40px;
+        width: 80%;
+        border: 2px solid white;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.1);
+        outline: none;
+        cursor: pointer;
+        border-radius: 50px;
+      }
+
+      #sign-up-btn:hover {
+        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.4),
+          0px 0px 10px rgba(255, 255, 255, 0.4),
+          0px 0px 20px rgba(255, 255, 255, 0.4);
+        background-color: black;
+        color: white;
+        transition: 0.2s ease-in;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4),
+          0px 0px 10px rgba(0, 0, 0, 0.4), 0px 0px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      #login {
+        margin-top: 15px;
+        display: block;
+        height: 40px;
+        width: 80%;
+        border: 2px solid white;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.1);
+        outline: none;
+        cursor: pointer;
+        border-radius: 50px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+
+      #login:hover {
+        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.4),
+          0px 0px 10px rgba(255, 255, 255, 0.4),
+          0px 0px 20px rgba(255, 255, 255, 0.4);
+        background-color: black;
+        color: white;
+        transition: 0.2s ease-in;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4),
+          0px 0px 10px rgba(0, 0, 0, 0.4), 0px 0px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      #login a {
+        color: white;
+        text-decoration: none;
+      }
+
+      #anchor {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      #tc,
+      #PP {
+        color: white;
+        text-decoration: none;
+      }
+
+      #tc:hover {
+        text-decoration: underline;
+      }
+
+      #PP:hover {
+        text-decoration: underline;
+      }
+
+      /* FLOATING LINK  */
+
+      #CODE {
+        position: fixed;
+        border: 5px solid white;
+        right: 100px;
+        bottom: 50px;
+        background-color: white;
+        color: black;
+        height: 40px;
+        width: 150px;
+        font-size: 1.2em;
+        text-align: center;
+        border-radius: 50px;
+        display: flex;
+        font-weight: bolder;
+        align-items: center;
+        padding: 0px 0px 0px 30px;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      #git {
+        font-size: 30px;
+        position: absolute;
+        top: 0;
+        left: 10px;
+      }
+
+      #CODE:hover {
+        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.4),
+          0px 0px 10px rgba(255, 255, 255, 0.4),
+          0px 0px 20px rgba(255, 255, 255, 0.4);
+        background-color: black;
+        color: white;
+        border: 5px solid black;
+        transition: 0.2s ease-in;
+        box-shadow: 0px 0px 5px 5 rgba(0, 0, 0, 0.4),
+          0px 0px 10px 5 rgba(0, 0, 0, 0.4), 0px 0px 20px 5 rgba(0, 0, 0, 0.4);
+      }
+      #git:hover {
+        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2),
+          0px 0px 10px rgba(255, 255, 255, 0.2),
+          0px 0px 20px rgba(255, 255, 255, 0.2);
+        background-color: black;
+        color: WHITE;
+      }
+
+      /* BREAK POINTS */
+
+      @media (max-width: 1650px) {
+        .wrapper {
+          margin: 0 30%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;
+        }
+      }
+
+      @media (max-width: 1450px) {
+        .wrapper {
+          margin: 0 25%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;
+        }
+      }
+
+      @media (max-width: 1100px) {
+        #CODE {
+          position: fixed;
+          border: 5px solid rgb(255, 255, 255);
+          bottom: 10px;
+          right: 10px;
+          background-color: white;
+          color: black;
+          height: 40px;
+          width: 150px;
+          font-size: 1.2em;
+          text-align: center;
+          border-radius: 50px;
+          display: flex;
+          font-weight: bolder;
+          align-items: center;
+          padding: 0px 0px 0px 30px;
+          justify-content: center;
+          text-decoration: none;
+          box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        #git {
+          font-size: 30px;
+          position: absolute;
+          top: 0;
+          left: 10px;
+        }
+
+        .wrapper {
+          margin: 0 22%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;
+        }
+      }
+
+      @media (max-width: 850px) {
+        .wrapper {
+          margin: 0 18%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;
+        }
+
+        #CODE {
+        position: absolute;
+        border: 5px solid white;
+        right: 10px;
+        top: 22px;
+        background-color: white;
+        color: black;
+        height: 25px;
+        width: 90px;
+        font-size: .6em;
+        text-align: center;
+        border-radius: 50px;
+        display: flex;
+        font-weight: bolder;
+        align-items: center;
+        padding: 0px 0px 0px 0px;
+        /* justify-content: center; */
+        text-decoration: none;
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .header {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        backdrop-filter: blur(50px);
+        height: 70px;
+        position: relative;
+      }
+
+      #git {
+        position: absolute;
+        font-size: 15px;
+        left: 2px;
+      }
+      }
+
+      @media (max-width: 750px) {
+        .wrapper {
+          margin: 0 16%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;
+        }
+
+      h1 {
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 35px;
+        color: white;
+        font-size: 43px;
+      }
+
+
+      .name-container {
+        padding: 0 50px;
+        position: relative;
+      }
+
+      .pass-wrapper {
+        padding: 0 50px;
+      }
+
+      .email-container {
+        padding: 0 50px;
+      }
+
+
+      .repeat-pass-wrapper {
+        padding: 0 50px;
+      }
+      }
+
+      @media (max-width: 650px) {
+        .wrapper {
+          margin: 0 15%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;
+        }
+
+        h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: white;
+        font-size: 30px;
+      }
+
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+        height: 100%;
+        padding-left: 10px;
+        font-family: sans-serif;
+      }
+      }
+
+      @media (max-width: 600px) {
+        .wrapper {
+          margin: 0 13%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;
+        }
+
+
+        .name-container {
+        padding: 0 30px;
+        position: relative;
+      }
+
+      .pass-wrapper {
+        padding: 0 40px;
+      }
+
+      .email-container {
+        padding: 0 40px;
+      }
+
+
+      .repeat-pass-wrapper {
+        padding: 0 40px;
+      }
+
+        #iconA {
+          color: white;
+          font-size: 25px;
+          position: absolute;
+          right: 0;
+          bottom: 15%;
+        }
+
+        #ICONc {
+          color: white;
+          font-size: 25px;
+          position: absolute;
+          right: 0;
+          bottom: 15%;
+        }
+
+        #iconB {
+          color: white;
+          font-size: 25px;
+          position: absolute;
+          right: 0;
+          bottom: 15%;
+        }
+
+        #lock {
+          color: white;
+          font-size: 25px;
+          position: absolute;
+          right: 0;
+          bottom: 15%;
+        }
+
+        #name {
+        height: 40px;
+        width: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        padding-left: 10px;
+        padding-right: 40px;
+        font-size: 17px;
+        outline: none;
+      }
+
+      #email {
+        height: 40px;
+        width: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        padding-left: 10px;
+        font-size: 17px;
+        outline: none;
+        padding-right: 40px;
+      }
+
+      
+      #re-password {
+        height: 40px;
+        width: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        padding-left: 10px;
+        font-size: 17px;
+        outline: none;
+        padding-right: 40px;
+      }
+
+      
+      #password {
+        height: 40px;
+        width: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        padding-left: 10px;
+        font-size: 17px;
+        outline: none;
+        padding-right: 40px;
+      }
+    }
+
+      @media (max-width: 500px) {
+        .wrapper {
+          margin: 0 8%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;}
+
+          #CODE {
+        position: fixed;
+        border: 5px solid white;
+        right: 10px;
+        bottom: 10px;
+        background-color: white;
+        color: black;
+        height: 25px;
+        width: 90px;
+        font-size: .6em;
+        text-align: center;
+        border-radius: 50px;
+        display: flex;
+        font-weight: bolder;
+        align-items: center;
+        padding: 0px 0px 0px 0px;
+        /* justify-content: center; */
+        text-decoration: none;
+        ;
+      }
+
+      #git {
+        position: absolute;
+        font-size: 15px;
+        left: 0px;
+      }
+
+      #CODE {
+        position: absolute;
+        border: 5px solid white;
+        right: 10px;
+        top: 22px;
+        background-color: white;
+        color: black;
+        height: 25px;
+        width: 90px;
+        font-size: .6em;
+        text-align: center;
+        border-radius: 50px;
+        display: flex;
+        font-weight: bolder;
+        align-items: center;
+        padding: 0px 0px 0px 0px;
+        /* justify-content: center; */
+        text-decoration: none;
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .header {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        backdrop-filter: blur(50px);
+        height: 70px;
+        position: relative;
+      }
+
+      }
+
+      @media (max-width:450px){
+
+          
+      body {
+        background-image: url(https://images.unsplash.com/photo-1595521488367-9b130f86bbe3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTJ8fGNhcnxlbnwwfHwwfHx8MA%3D%3D);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+        }
+
+
+
+          .name-container {
+        padding: 0 30px;
+        position: relative;
+      }
+
+      .pass-wrapper {
+        padding: 0 30px;
+      }
+
+      .email-container {
+        padding: 0 30px;
+      }
+
+
+      .repeat-pass-wrapper {
+        padding: 0 30px;
+      }
+
+
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: white;
+        font-size: 33px;
+      }
+
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+        height: 100%;
+        padding-left: 10px;
+        font-family: sans-serif;
+      }
+
+      @media (max-width:350px){
+        #anchor {
+        margin-top: 10px;
+        display: flex;
+        flex-direction:column;
+        gap: 5px;
+        margin-bottom: 30px;
+      }
+
+      .wrapper {
+          margin: 0 5%;
+          background-color: rgba(0, 0, 0, 0.2);
+          height: 670px;
+          margin-top: 10vh;
+          backdrop-filter: blur(10px);
+          border: 1px solid white;
+          border-radius: 15px;
+          box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);}
+      }
+
+      @media (max-width:300px) {
+        h2 {
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+        height: 100%;
+        padding-left: 10px;
+        font-family: sans-serif;
+      }
+      }
+
+      @media (max-width:265px) {
+        h2 {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        height: 100%;
+        padding-left: 10px;
+        font-family: sans-serif;
+      }
+
+      }
+
+      @media (max-width:250px) {
+        #re-pass-l {
+        display: block;
+        color: white;
+        font-size: 16px;
+        padding-left: 5px;
+        margin-top: 35px;
+      }
+      }
+
+      @media (max-width:360px){
+        #tc,
+      #PP {
+        color: white;
+        text-decoration: none;
+        font-size: .6rem;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>Mustafa(div)</h2>
+    </div>
+    <div class="wrapper">
+      <form action="">
+        <h1>Sign up</h1>
+        <div class="name-container">
+          <label id="nameA" for="name">Name</label>
+          <div id="inputbox">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter name"
+            />
+            <i id="iconA" class="bx bx-user"></i>
+          </div>
+        </div>
+        <div class="email-container">
+          <label id="email-l" for="email">Email</label>
+          <div id="email-input">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Enter email"
+            />
+            <i id="ICONc" class="bx bx-envelope"></i>
+          </div>
+        </div>
+        <div class="pass-wrapper">
+          <label id="pass-l" for="password">Password</label>
+          <div id="input-password">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Enter password"
+            />
+            <i id="iconB" class="bx bx-lock-alt"></i>
+          </div>
+        </div>
+        <div class="repeat-pass-wrapper">
+          <label id="re-pass-l" for="password">Repeat Password</label>
+          <div id="re-pass">
+            <input
+              type="password"
+              id="re-password"
+              name="password"
+              required
+              placeholder="Enter password"
+            />
+            <i id="lock" class="bx bx-lock-alt"></i>
+          </div>
+          <div id="anchor">
+            <a id="tc" href="#">Terms & condition</a>
+            <a id="PP" href="#">Privicy policy</a>
+          </div>
+          <div class="btn">
+            <button id="sign-up-btn" type="submit">Sign up</button>
+            <a id="login" href="">Login</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="code-cotainer">
+      <a id="CODE" href=""><i id="git" class="bx bxl-github"></i>Get Code</a>
+    </div>
+  </body>
+</html>
